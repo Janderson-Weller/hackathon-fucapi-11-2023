@@ -1,9 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
-import searchWikiSlice from './slice/searchWikipedia';
+import searchSlice from './slice/searchSlice.ts';
 
 const store = configureStore({
     reducer: {
-        searchWikiSlice
+        searchSlice
     }
 })
 

@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { getSearchWikiAction } from "../../actions/searchWikiAction";
+import { getSearchWikiAction } from "../../actions/searchAction";
 import PagesWikiDTO from "../../interface/PagesWikiDTO";
 
 export interface SearchWikiProps {
@@ -14,8 +14,8 @@ const initialState: SearchWikiProps = Object.freeze({
     error: undefined
 });
 
-export const searchWikiSlice = createSlice({
-    name: 'searchWikiSlice',
+export const searchSlice = createSlice({
+    name: 'searchSlice',
     initialState,
     reducers: {
         setSearchWikiProps: <K extends keyof SearchWikiProps,>(state: SearchWikiProps, action: PayloadAction<{ prop: K, value: any }>) => {
@@ -41,6 +41,6 @@ export const searchWikiSlice = createSlice({
 
 export const {
     setSearchWikiProps,
-} = searchWikiSlice.actions;
+} = searchSlice.actions;
 
-export default searchWikiSlice.reducer
+export default searchSlice.reducer

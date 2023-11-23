@@ -6,7 +6,7 @@ import Loader from "../../../shared/Loader";
 
 const Card = () => {
 
-    const { resultSearch, loading } = useAppSelector(state => state.searchWikiSlice);
+    const { resultSearch, loading } = useAppSelector(state => state.searchSlice);
     const [showModal, setShowModal] = useState<boolean>(false);
     const [link, setLink] = useState<string | undefined>(undefined);
     const [showIframe, setShowIframe] = useState<boolean>(false);
