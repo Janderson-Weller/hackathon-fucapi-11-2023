@@ -1,15 +1,18 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { getSearchWikiAction } from "../../actions/searchAction";
+import { getSearchWikiAction, getSearchYouTubeAction } from "../../actions/searchAction";
 import PagesWikiDTO from "../../interface/PagesWikiDTO";
+import ItemsYouTubeDTO from "../../interface/ItemsYouTubeDTO";
 
 export interface SearchWikiProps {
-    resultSearch: PagesWikiDTO[];
+    resultSearchWiki: PagesWikiDTO[];
+    resultSearchYouTube: ItemsYouTubeDTO[];
     loading: boolean;
     error: string | undefined;
 }
 
 const initialState: SearchWikiProps = Object.freeze({
-    resultSearch: [],
+    resultSearchWiki: [],
+    resultSearchYouTube: [],
     loading: false,
     error: undefined
 });
@@ -26,13 +29,25 @@ export const searchSlice = createSlice({
     extraReducers: (builder) => {
         builder.addCase(getSearchWikiAction.fulfilled, (state, action) => {
             console.log(action.payload)
-            state.resultSearch = action.payload;
+            state.resultSearchWiki = action.payload;
             state.loading = false;
         })
         builder.addCase(getSearchWikiAction.pending, (state) => {
             state.loading = true;
         })
         builder.addCase(getSearchWikiAction.rejected, (state, action) => {
+            state.loading = false;
+            state.error = action.payload as string;
+        })
+        builder.addCase(getSearchYouTubeAction.fulfilled, (state, action) => {
+            console.log(action.payload)
+            state.resultSearchYouTube = action.payload;
+            state.loading = false;
+        })
+        builder.addCase(getSearchYouTubeAction.pending, (state) => {
+            state.loading = true;
+        })
+        builder.addCase(getSearchYouTubeAction.rejected, (state, action) => {
             state.loading = false;
             state.error = action.payload as string;
         })

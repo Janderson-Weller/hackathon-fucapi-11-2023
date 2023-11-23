@@ -4,26 +4,18 @@ import { useState } from "react";
 import { createPortal } from "react-dom";
 import Loader from "../../../shared/Loader";
 
-const Card = () => {
+const CardWiki = () => {
 
-    const { resultSearch, loading } = useAppSelector(state => state.searchSlice);
+    const { resultSearchWiki } = useAppSelector(state => state.searchSlice);
     const [showModal, setShowModal] = useState<boolean>(false);
     const [link, setLink] = useState<string | undefined>(undefined);
     const [showIframe, setShowIframe] = useState<boolean>(false);
-
-    if (loading) {
-        return (
-            <CContainer className="vh-100">
-                <Loader />
-            </CContainer>
-        );
-    }
 
     return (
         <>
             <CRow className="m-0" xs={{ cols: 4 }}>
                 {
-                    resultSearch.length > 0 ? resultSearch.map(item => (
+                    resultSearchWiki.length > 0 ? resultSearchWiki.map(item => (
                         <CCol key={item.pageid} className="m-0 d-flex justify-content-center mb-3 mt-3" xs={12} md={3} lg={3}>
                             <CCard className="w-100">
                                 <CCardBody>
@@ -65,7 +57,7 @@ const Card = () => {
                             }
                             <CContainer className="d-flex z-3 h-100 w-100 position-absolute top-50 start-50 translate-middle">
                                 <iframe
-                                    onLoad={() => { setShowIframe(true); console.log(link) }}
+                                    onLoad={() => setShowIframe(true)}
                                     title="iframeSearch" id="modalIframe"
                                     className={`w-100 h-100 ${showIframe} ? 'd-none' : 'd-block'`}
                                     src={`https://pt.wikipedia.org/wiki/${link}`}></iframe>
@@ -81,4 +73,4 @@ const Card = () => {
     );
 }
 
-export default Card;
+export default CardWiki;

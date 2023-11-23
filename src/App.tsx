@@ -1,13 +1,14 @@
 import '@coreui/coreui/dist/css/coreui.min.css';
 import { Provider } from 'react-redux';
 import store from './store/store';
-import InitialPage from './pages';
+import { RouterProvider } from 'react-router-dom';
+import routes from './routes';
 
 function App() {
 
     return (
         <Provider store={store}>
-            <InitialPage />
+            <RouterProvider router={routes} />
         </Provider>
     )
 }

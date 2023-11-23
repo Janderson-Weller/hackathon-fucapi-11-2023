@@ -1,13 +1,14 @@
-import { CButton, CContainer, CForm, CFormInput, CNavbar, CNavbarBrand } from "@coreui/react";
+import { CButton, CContainer, CForm, CFormInput, CNav, CNavLink, CNavbar, CNavbarBrand } from "@coreui/react";
 import { useAppDispatch } from "../hooks/reduxHooks";
-import { getSearchWikiAction } from "../actions/searchWikiAction";
+import { getSearchWikiAction } from "../actions/searchAction";
 import React, { useState } from "react";
-import Card from "./components/card/Card";
+import { Link, Outlet } from "react-router-dom";
 
 const InitialPage = () => {
 
     const dispatch = useAppDispatch();
     const [search, setSearch] = useState<string>("");
+    const [activeKey, setActiveKey] = useState<number>(1);
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -37,7 +38,19 @@ const InitialPage = () => {
                     </CForm>
                 </CContainer>
             </CNavbar>
-            <Card />
+            <CContainer className="mt-3" fluid>
+                <CContainer fluid>
+                    <CNav variant="tabs" role="tablist">
+                        <CNavLink className="d-flex p-0" active={activeKey === 1}  onClick={() => setActiveKey(1)} component={"span"}>
+                            <Link to={"/wikipedia"} className={`w-100 h-100 py-2 px-3 text-decoration-none text-dark`}>Wikipédia</Link>
+                        </CNavLink>
+                        <CNavLink className="d-flex p-0" active={activeKey === 2}  onClick={() => setActiveKey(2)} component={"span"}>
+                            <Link to={"/youtube"} className={`w-100 h-100 py-2 px-3 text-decoration-none text-dark`}>YouTube</Link>
+                        </CNavLink>                        
+                    </CNav>
+                </CContainer>
+                <Outlet />
+            </CContainer>
         </>
     );
 }

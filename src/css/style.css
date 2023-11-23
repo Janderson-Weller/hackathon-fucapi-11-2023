@@ -1,0 +1,7 @@
+:root {
+    --globalColorBg: #fdfdff !important;
+}
+
+body {
+    background-color: var(--globalColorBg);
+}
