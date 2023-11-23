@@ -8,7 +8,10 @@ export const getSearchWikiAction = createAsyncThunk<PagesWikiDTO[], string>(
     async (search: string, { rejectWithValue }) => {
         try {
             const apiResponse = await apiSearchWiki(search);
-            return apiResponse.query.pages;
+
+            if (apiResponse.query)
+                return apiResponse.query.pages;
+            return [];
         } catch (error: any) {
             console.error("Error: ", error);
             return rejectWithValue(handleError(error));

@@ -1,4 +1,4 @@
-import { CButton, CCard, CCol, CCardBody, CCardText, CCardTitle, CRow, CCardFooter, CModal, CModalBody, CContainer, CModalFooter, CModalHeader, CModalTitle } from "@coreui/react";
+import { CButton, CCard, CCol, CCardBody, CCardText, CCardTitle, CRow, CCardFooter, CModal, CModalBody, CContainer, CModalFooter, CModalHeader, CModalTitle, CFormLabel } from "@coreui/react";
 import { useAppSelector } from "../../../hooks/reduxHooks";
 import { useState } from "react";
 import { createPortal } from "react-dom";
@@ -10,8 +10,6 @@ const Card = () => {
     const [showModal, setShowModal] = useState<boolean>(false);
     const [link, setLink] = useState<string | undefined>(undefined);
     const [showIframe, setShowIframe] = useState<boolean>(false);
-
-    console.log(showIframe)
 
     if (loading) {
         return (
@@ -25,7 +23,7 @@ const Card = () => {
         <>
             <CRow className="m-0" xs={{ cols: 4 }}>
                 {
-                    resultSearch.map(item => (
+                    resultSearch.length > 0 ? resultSearch.map(item => (
                         <CCol key={item.pageid} className="m-0 d-flex justify-content-center mb-3 mt-3" xs={12} md={3} lg={3}>
                             <CCard className="w-100">
                                 <CCardBody>
@@ -42,12 +40,16 @@ const Card = () => {
                                         onClick={() => {
                                             setShowModal(true);
                                             setShowIframe(true);
-                                            setLink(`https://pt.wikipedia.org/wiki/${item.title.replaceAll(' ', '_')}`);
+                                            setLink(`${item.title.replaceAll(' ', '_')}`);
                                         }}
                                     >Detalhar</CButton></CCardFooter>
                             </CCard>
                         </CCol >
                     ))
+                        :
+                        <CContainer fluid className="d-flex align-items-center w-100 text-center" style={{ height: "400px" }}>
+                            <CFormLabel className="fs-4 w-100">Sua busca não retornou dados</CFormLabel>
+                        </CContainer>
                 }
             </CRow >
             {
@@ -63,7 +65,7 @@ const Card = () => {
                             }
                             <CContainer className="d-flex z-3 h-100 w-100 position-absolute top-50 start-50 translate-middle">
                                 <iframe
-                                    onLoad={() => { setShowIframe(true); console.log("jjjjjjjjjj") }}
+                                    onLoad={() => { setShowIframe(true); console.log(link) }}
                                     title="iframeSearch" id="modalIframe"
                                     className={`w-100 h-100 ${showIframe} ? 'd-none' : 'd-block'`}
                                     src={`https://pt.wikipedia.org/wiki/${link}`}></iframe>
