@@ -24,17 +24,17 @@ const CardYouTube = () => {
                                             style={{ height: '100px', width: '80px', background: `url(${!item.snippet.thumbnails ? 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAA3ElEQVR4Ae2WIQzDIBBFEdPV6Ip6L2Y3Me9NMzuB98GbWrysqHf1otWYismm+vYFTRCEhXXjJrjkmSslLwHgi8vjxkoRKAL/J0BCSHAHGhjQgxHMwIKnY/Px+taNHd2/Bmg3p4wKuIH0Y1RQAB+ugDJxDgn0GQVMSMBmFJhDApSTYwLLQtR13xNAo0oWINS6ErXtpxInX0CmC3g1TURNkypQ+QL1IYG9hiFFRPIL8C8B/ybkO4bsFxH7Vcz+GLE/x5yBRL+LZDVQkTi2Ochn70dimQpFspKKi0AReAF/IVUTZ3/BGQAAAABJRU5ErkJggg==' : item.snippet.thumbnails.default.url}) center no-repeat` }}>
                                         </CCol>
                                     </CRow>
-                                    {/* <CCardTitle className="fs-6">{item.title}</CCardTitle> */}
-                                    {/* <CCardText>{item.description}</CCardText> */}
+                                    <CCardTitle className="fs-6">{item.snippet.title}</CCardTitle>
+                                    <CCardText>{item.snippet.description}</CCardText>
                                 </CCardBody>
                                 <CCardFooter className="d-flex justify-content-center">
                                     <CButton
                                         onClick={() => {
                                             setShowModal(true);
                                             setShowIframe(true);
-                                            // setLink(`${item.title.replaceAll(' ', '_')}`);
+                                            setLink(`${item.id.videoId}`);
                                         }}
-                                    >Detalhar</CButton></CCardFooter>
+                                    >Visualizar</CButton></CCardFooter>
                             </CCard>
                         </CCol >
                     ))
@@ -60,7 +60,7 @@ const CardYouTube = () => {
                                     onLoad={() => setShowIframe(true)}
                                     title="iframeSearch" id="modalIframe"
                                     className={`w-100 h-100 ${showIframe} ? 'd-none' : 'd-block'`}
-                                    src={`https://www.youtube.com/watch?v=${link}`}></iframe>
+                                    src={`https://www.youtube.com/embed/${link}`}></iframe>
                             </CContainer>
                         </CModalBody>
                         <CModalFooter>

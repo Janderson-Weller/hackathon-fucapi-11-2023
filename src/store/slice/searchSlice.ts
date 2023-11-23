@@ -28,7 +28,6 @@ export const searchSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder.addCase(getSearchWikiAction.fulfilled, (state, action) => {
-            console.log(action.payload)
             state.resultSearchWiki = action.payload;
             state.loading = false;
         })
@@ -40,7 +39,6 @@ export const searchSlice = createSlice({
             state.error = action.payload as string;
         })
         builder.addCase(getSearchYouTubeAction.fulfilled, (state, action) => {
-            console.log(action.payload)
             state.resultSearchYouTube = action.payload;
             state.loading = false;
         })
