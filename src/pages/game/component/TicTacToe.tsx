@@ -1,7 +1,9 @@
-import { CContainer } from "@coreui/react";
+import { CButton, CContainer } from "@coreui/react";
 import Board from "./Board";
 import Square from "./Square";
 import { useState, useEffect } from 'react';
+import FooterMath from "./FooterMath";
+import { handleSumTable } from "../utils/handleMath";
 
 const defaultSquares = () => (new Array(9)).fill(null);
 
@@ -14,6 +16,7 @@ const lines = [
 const TicTacToeGame = () => {
     const [squares, setSquares] = useState(defaultSquares());
     const [winner, setWinner] = useState<string | null>(null);
+    const [tableSum, setTableSum] = useState<{ calculus: string, result: string }[]>(handleSumTable());
 
     useEffect(() => {
         const isComputerTurn = squares.filter(square => square !== null).length % 2 === 1;
@@ -64,11 +67,11 @@ const TicTacToeGame = () => {
             const randomIndex = emptyIndexes[Math.ceil(Math.random() * emptyIndexes.length)];
             putComputerAt(randomIndex as number);
         }
-    }, [squares]);
+    }, [squares, tableSum]);
 
 
 
-    function handleSquareClick(index: number) {
+    const handleSquareClick = (index: number) => {
         const isPlayerTurn = squares.filter(square => square !== null).length % 2 === 0;
         if (isPlayerTurn) {
             let newSquares = squares;
@@ -77,32 +80,48 @@ const TicTacToeGame = () => {
         }
     }
 
-    return (
-        <main>
-            <Board className="gap-1">
-                {squares.map((square, index) =>
-                    <Square
-                        x={square === 'x' ? 1 : 0}
-                        o={square === 'o' ? 1 : 0}
-                        onClick={() => handleSquareClick(index)} />
-                )}
-            </Board>
-            {
-                !!winner && winner === 'x' && (
-                    <CContainer className="fs-2 text-success" fluid>
-                        Você GANHOU!
-                    </CContainer>
-                )
-            }
-            {
-                !!winner && winner === 'o' && (
-                    <CContainer className="fs-2 text-danger text-center" fluid>
-                        Você PERDEU!
-                    </CContainer>
-                )
-            }
+    const handleRestart = () => {
+        setSquares(defaultSquares());
+        setTableSum(handleSumTable());
+        setWinner(null);
+    }
 
-        </main >
+    return (
+        <CContainer fluid>
+            <CContainer className="main">
+                <Board className="gap-1">
+                    {squares.map((square, index) =>
+                        <Square
+                            key={index}
+                            x={square === 'x' ? 1 : 0}
+                            o={square === 'o' ? 1 : 0}
+                            table={tableSum[index].calculus}
+                        />
+                    )}
+                </Board>
+                {
+                    !!winner && winner === 'x' && (
+                        <CContainer className="fs-2 text-success" fluid>
+                            Você GANHOU!
+                        </CContainer>
+                    )
+                }
+                {
+                    !!winner && winner === 'o' && (
+                        <CContainer className="fs-2 text-danger text-center" fluid>
+                            Você PERDEU!
+                        </CContainer>
+                    )
+                }
+                {(!!winner && winner === 'x' || !!winner && winner === 'o') &&
+                    <CContainer className="d-flex justify-content-center" fluid>
+                        <CButton onClick={handleRestart}>Jogar Novamente</CButton>
+                    </CContainer>
+                }
+
+            </CContainer>
+            {!winner && <FooterMath listOperations={tableSum} clickOption={handleSquareClick} />}
+        </CContainer>
     );
 }
 
