@@ -2,7 +2,7 @@
 # Sobre o Hackathon
 
 # Tema
-Aprendizgem da Educação Básica Com Ajuda Da Tecnologia.
+Aprendizagem da Educação Básica Com Ajuda Da Tecnologia.
 
 # Introdução
 # Jogos Educacionais e Desenvolvimento Intelectual: O Papel da Tecnologia e do JavaScript
@@ -13,7 +13,7 @@ O JavaScript, como uma das linguagens de programação mais amplamente utilizada
 
 Neste contexto, explorarei como a tecnologia, particularmente através do uso de JavaScript, se tornou um catalisador essencial no desenvolvimento intelectual. Analisarei como os jogos educacionais, impulsionados por esta linguagem de programação, estão moldando o cenário educacional contemporâneo e proporcionando experiências de aprendizado estimulantes e eficazes para pessoas de todas as idades.
 
-O sistema contém duas API's, uma da Wikipédia e outra do Youtube onde é possível pesquisar qualquer tema de interesse, além de ter uma aba de lista de tarefas visando controlar o fluxo de estudo do indivíduo. Na aba de 'Aprenda Brincando' há o jogo da velha onde o jogador precisa calcular o valor da equação escolhida para pode realizar a jogada, além de outros jogos.
+O sistema contém duas API's, uma da Wikipédia e outra do Youtube onde é possível pesquisar qualquer tema de interesse, além de ter uma aba de lista de tarefas visando controlar o fluxo de estudo do indivíduo. Na aba 'Aprenda Brincando' há o jogo da velha onde o jogador precisa calcular o valor da equação escolhida para realizar a jogada, além de outros jogos.
 
 Para rodar o projeto, basta seguir os passos seguites.
 
