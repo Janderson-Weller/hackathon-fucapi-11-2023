@@ -5,3 +5,28 @@
 body {
     background-color: var(--globalColorBg);
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+
+.todo-wrapper {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    margin: 0 auto !important;
+    max-width: 360px !important;
+    padding: 4rem 2rem !important;
+}
+
+.todo-wrapper h1 {
+    color: #fff !important;
+    font-size: 3.2rem !important;
+    margin-bottom: 2rem !important;
+    padding-bottom: 0.5rem !important;
+    border-bottom: 2px solid #4eb879 !important;
+    transition: color 0.3s !important;
+    font-family: 'Permanent Marker', cursive !important;
+}
+
+.todo-wrapper h1:hover {
+    color: #4eb879 !important;
+}

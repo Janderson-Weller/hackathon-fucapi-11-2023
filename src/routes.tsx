@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import InitialPage from "./pages";
 import Wikipedia from "./pages/wikipedia/index";
 import YouTube from "./pages/youtube";
+import Todo from "./pages/toDoList/Todo";
 
 const routes = createBrowserRouter([
     {
@@ -15,6 +16,10 @@ const routes = createBrowserRouter([
             {
                 path: "/youtube",
                 element: <YouTube />,
+            },
+            {
+                path: "/todo-list",
+                element: <Todo />,
             },
         ]
     }

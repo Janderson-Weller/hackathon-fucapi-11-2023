@@ -50,6 +50,9 @@ const InitialPage = () => {
                         <CNavLink className="d-flex p-0" active={pathname === "/youtube"} component={"span"}>
                             <Link to={"/youtube"} className={`w-100 h-100 py-2 px-3 text-decoration-none text-dark`}>YouTube</Link>
                         </CNavLink>
+                        <CNavLink className="d-flex p-0" active={pathname === "/todo-list"} component={"span"}>
+                            <Link to={"/todo-list"} className={`w-100 h-100 py-2 px-3 text-decoration-none text-dark`}>Lista de Tarefas</Link>
+                        </CNavLink>
                     </CNav>
                 </CContainer>
                 <Outlet />
