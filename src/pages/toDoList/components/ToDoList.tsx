@@ -44,6 +44,7 @@ const ToDoList = ({ itemsList }: { itemsList: TaskDTO[] | ToDoDTO[] }) => {
                             />
                         }
                         <CListGroupItem
+                            role={`${isTodoList(item) ? "button" : ''}`}
                             color="success border-0 text-dark"
                             key={index}
                             className="w-100 mt-2 rounded"
@@ -52,7 +53,7 @@ const ToDoList = ({ itemsList }: { itemsList: TaskDTO[] | ToDoDTO[] }) => {
                                     handleGetToDo(item);
                                 }
                             }}
-                        >{item.title}</CListGroupItem >
+                        >{item.title}</CListGroupItem>
                     </CContainer>
                 ))
             }

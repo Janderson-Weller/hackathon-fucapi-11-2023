@@ -38,7 +38,8 @@ export const handleSumTable = (operation: string): { calculus: string, result: n
         default:
             handleMath().forEach(({ a, b }) => {
                 if (b !== 0)
-                    addOperation(`${a} / ${b}`, a * b);
+                    return addOperation(`${a} / ${b}`, Math.floor((a / b)));
+                return addOperation(`${a} / ${b}`, Math.floor((a / (b + 1))));
             });
             return outputArray;
     }

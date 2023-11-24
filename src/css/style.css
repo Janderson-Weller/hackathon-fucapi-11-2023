@@ -6,12 +6,9 @@ body {
     background-color: var(--globalColorBg);
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
-
-
 .main {
     width: 310px;
-    margin: 50px auto 0;
+    margin: 50px;
 }
 
 div.board {

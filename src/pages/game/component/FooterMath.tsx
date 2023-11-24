@@ -8,11 +8,11 @@ interface FooterMathProps {
 const FooterMath = ({ listOperations, clickOption }: FooterMathProps) => {
 
     return (
-        <CContainer className="mt-5 d-flex justify-content-center" fluid>
-            <CRow className="m-0 mt-3 justify-content-center w-50">
+        <CContainer className="d-flex justify-content-center" fluid>
+            <CRow className="m-0 mt-3 justify-content-center">
                 {
                     Array.from({ length: 9 }).map((_, index: number) => (
-                        <CCol key={index} style={{ width: '50px'}}>
+                        <CCol key={index} style={{ minWidth: '50px'}}>
                             <CButton type="button" onClick={() => clickOption(index)}>{listOperations[index].result}</CButton>
                         </CCol>
                     ))
