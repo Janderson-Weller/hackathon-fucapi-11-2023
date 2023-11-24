@@ -33,7 +33,7 @@ export const handleSumTable = (operation: string): { calculus: string, result: n
             handleMath().forEach(({ a, b }) => addOperation(`${a} - ${b}`, a - b));
             return outputArray;
         case 'multiplication':
-            handleMath().forEach(({ a, b }) => addOperation(`${a} * ${b}`, a * b));
+            handleMath().forEach(({ a, b }) => addOperation(`${a} x ${b}`, a * b));
             return outputArray;
         default:
             handleMath().forEach(({ a, b }) => {

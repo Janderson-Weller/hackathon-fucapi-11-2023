@@ -123,7 +123,7 @@ const TicTacToeGame = () => {
                         }
                     </CListGroup >
                 </CCol>
-                <CCol className="d-flex justify-content-center  border-2 border-start">
+                <CCol className="d-flex justify-content-center border-2 border-start">
                     <CRow className="m-0 justify-content-center">
                         <CContainer className="main">
                             <Board className="gap-1">
