@@ -38,8 +38,25 @@ function Todo() {
         const list = handleGetToDoLocalStorage();
         if (!list)
             localStorage.setItem('todoList', JSON.stringify([toDo]));
-        else
-            localStorage.setItem('todoList', JSON.stringify([...list, toDo]));
+        else {
+
+            const find = list.find(todo => todo.title === toDo.title);
+
+            if (!find)
+                localStorage.setItem('todoList', JSON.stringify([...list, toDo]));
+
+            else {
+
+                const updated = list.map(todo => {
+                    if (todo.title === toDo.title) {
+                        return { ...toDo };
+                    }
+                    return todo;
+                });
+
+                localStorage.setItem('todoList', JSON.stringify(updated));
+            }
+        }
 
         dispatch(changeStateByProps({ prop: 'toDo', value: { title: '', task: [] } }));
         dispatch(changeStateByProps({ prop: "listToDo", value: handleGetToDoLocalStorage() ?? [] }));

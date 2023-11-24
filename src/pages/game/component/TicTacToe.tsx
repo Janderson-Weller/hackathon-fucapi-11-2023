@@ -1,4 +1,4 @@
-import { CButton, CCol, CContainer, CListGroup, CListGroupItem, CRow } from "@coreui/react";
+import { CButton, CCol, CContainer, CFormLabel, CListGroup, CListGroupItem, CRow } from "@coreui/react";
 import Board from "./Board";
 import Square from "./Square";
 import { useState, useEffect } from 'react';
@@ -108,7 +108,8 @@ const TicTacToeGame = () => {
     return (
         <CContainer fluid>
             <CRow className="m-0">
-                <CCol className="d-flex justify-content-center" xs={3}>
+                <CCol className="d-flex flex-column" xs={3}>
+                    <CFormLabel className="w-100 text-center mt-3">Escolha uma operação abaixo 👇🏻</CFormLabel>
                     <CListGroup className="w-100 mt-4">
                         {
                             operations.map((item: { key: string, value: string }, index: number) => (
