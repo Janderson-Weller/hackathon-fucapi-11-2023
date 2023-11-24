@@ -1,10 +1,10 @@
-export interface TodoDTO {
+export interface TaskDTO {
     title: string;
     dateCreate: string;
 }
 
-export interface TodoListDTO {
+export interface ToDoDTO {
     title: string;
-    todo: TodoDTO[];
+    task: TaskDTO[];
     dateCreate?: string;
 }

@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import searchSlice from './slice/searchSlice.ts';
+import toDoSlice from './slice/todo.ts';
 
 const store = configureStore({
     reducer: {
-        searchSlice
+        searchSlice,
+        toDoSlice
     }
 })
 
