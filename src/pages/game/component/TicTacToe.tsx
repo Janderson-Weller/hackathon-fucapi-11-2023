@@ -16,7 +16,7 @@ const lines = [
 const TicTacToeGame = () => {
     const [squares, setSquares] = useState(defaultSquares());
     const [winner, setWinner] = useState<string | null>(null);
-    const [tableSum, setTableSum] = useState<{ calculus: string, result: string }[]>(handleSumTable());
+    const [tableSum, setTableSum] = useState<{ calculus: string, result: number }[]>(handleSumTable('addition'));
 
     useEffect(() => {
         const isComputerTurn = squares.filter(square => square !== null).length % 2 === 1;
@@ -82,7 +82,7 @@ const TicTacToeGame = () => {
 
     const handleRestart = () => {
         setSquares(defaultSquares());
-        setTableSum(handleSumTable());
+        setTableSum(handleSumTable('addition'));
         setWinner(null);
     }
 

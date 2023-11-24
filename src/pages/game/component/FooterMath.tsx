@@ -1,7 +1,7 @@
 import { CButton, CCol, CContainer, CRow } from "@coreui/react"
 
 interface FooterMathProps {
-    listOperations: { calculus: string, result: string }[];
+    listOperations: { calculus: string, result: number }[];
     clickOption: (index: number) => void;
 }
 
