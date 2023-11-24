@@ -86,8 +86,6 @@ const TicTacToeGame = () => {
         console.log("squares  -- ", winner)
     }, [squares]);
 
-
-
     const handleSquareClick = (index: number) => {
         const isPlayerTurn = squares.filter(square => square !== null).length % 2 === 0;
         if (isPlayerTurn) {
@@ -102,8 +100,6 @@ const TicTacToeGame = () => {
         setTableSum(handleSumTable('addition'));
         setWinner(null);
     }
-
-    console.log(winner)
 
     return (
         <CContainer fluid>
@@ -123,6 +119,17 @@ const TicTacToeGame = () => {
                             ))
                         }
                     </CListGroup >
+                    <CContainer className="mt-3 p-0" fluid>
+                        <CFormLabel className="text-center w-100">Outros Jogos</CFormLabel>
+                        <CListGroup className="w-100 mt-4">
+                            <CListGroupItem
+                                role="button"
+                                color="success border-0 text-dark"
+                                className="w-100 mt-2 rounded"
+                                onClick={() => window.location.href = 'https://janderson-weller.github.io/desafio-3-tech-academy-super-mario/'}
+                            >Super Mario</CListGroupItem>
+                        </CListGroup>
+                    </CContainer>
                 </CCol>
                 <CCol className="d-flex justify-content-center border-2 border-start">
                     <CRow className="m-0 justify-content-center">
